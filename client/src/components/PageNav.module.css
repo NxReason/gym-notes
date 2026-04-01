@@ -1,0 +1,18 @@
+.container {
+  height: 100%;
+}
+.links {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+.link {
+  display: inline-block;
+  height: 100%;
+  padding: 0.9rem 1rem;
+
+  background-color: var(--bg-tertiary);
+}
+.link:global(.active) {
+  background-color: var(--bg-elevated);
+}

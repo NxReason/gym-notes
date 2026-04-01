@@ -1,0 +1,35 @@
+.container {
+  padding: 1rem 0;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.label {
+  padding-left: 0.5rem;
+}
+.label:hover {
+  cursor: pointer;
+}
+.textInput {
+  padding: 0 0.5rem;
+  height: 3rem;
+  line-height: 3rem;
+
+  border: 1px solid var(--color-accent);
+  border-radius: 0.5rem;
+  outline: none;
+}
+.textInput:focus {
+  border-color: var(--color-accent-active);
+}
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}

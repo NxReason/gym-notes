@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0b0b12;
+  --bg-secondary: #12121f;
+  --bg-tertiary: #1a1a2e;
+  --bg-elevated: #222240;
+
+  --text-primary: #f5f5ff;
+  --text-secondary: #cfcfe6;
+  --text-muted: #9a9ab8;
+  --text-inverse: #0b0b12;
+
+  --color-accent: #f33857;
+  --color-accent-hover: #ff4d6a;
+  --color-accent-active: #e11d48;
+  --color-accent-muted: #ffc7ce;
+
+  font:
+    16px 'JetBrainsMono NFM',
+    monospace;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  color: var(--text-secondary);
+}
+
+button {
+  font: inherit;
+  color: var(--text-primary);
+  background-color: var(--color-accent);
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.15s ease;
+}
+button:hover {
+  cursor: pointer;
+  background-color: var(--color-accent-hover);
+}
