@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDeleteExercise, useUpdateExercise } from '../../api/useExercises';
+import { exerciseStore } from './exercisesStore';
 
 export default function ExerciseCard({ id, name, styles }) {
   const deleteExercise = useDeleteExercise();
   const updateExercise = useUpdateExercise();
 
-  const [isUpdating, setIsUpdating] = useState(false);
+  const { updatingId, setUpdatingId } = exerciseStore();
+  const isUpdating = updatingId === id;
+
   const [currentName, setName] = useState(name);
   const nameInputRef = useRef(null);
 
@@ -20,17 +23,17 @@ export default function ExerciseCard({ id, name, styles }) {
   }, [isUpdating]);
 
   function handleUpdClick() {
-    setIsUpdating(true);
+    setUpdatingId(id);
   }
 
   function handleCancelClick() {
-    setIsUpdating(false);
+    setUpdatingId(null);
     setName(name);
   }
 
   async function handleSaveClick() {
     await updateExercise.mutateAsync({ id, name: currentName });
-    setIsUpdating(false);
+    setUpdatingId(null);
   }
 
   function handleDeleteClick() {
