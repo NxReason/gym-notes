@@ -11,6 +11,7 @@ export default function NewExercise() {
   async function handleSubmit(e) {
     e.preventDefault();
     await createExercise.mutateAsync({ name });
+    setName('');
   }
 
   function handleNameInput(e) {

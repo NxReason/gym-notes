@@ -13,3 +13,19 @@ export async function create(path, data) {
     body: JSON.stringify(data),
   });
 }
+
+export async function update(path, data) {
+  return await fetch(path, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function remove(path) {
+  return await fetch(path, {
+    method: 'DELETE',
+  });
+}

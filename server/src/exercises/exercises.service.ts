@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Exercise } from './exercise.entity';
 import { Repository } from 'typeorm';
@@ -25,8 +25,9 @@ export class ExercisesService {
 
   async update(updEx: Exercise): Promise<Exercise | null> {
     const exDb = await this.exRepo.findOneBy({ id: updEx.id });
-    if (!exDb) return null;
+    if (!exDb) throw new NotFoundException();
     exDb.name = updEx.name;
+    await this.exRepo.save(exDb);
     return exDb;
   }
 

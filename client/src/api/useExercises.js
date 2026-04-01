@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { BASE_URL, create } from './client';
+import { BASE_URL, create, remove, update } from './client';
 
 const EXERCISES_URL = BASE_URL + '/api/exercises';
 
@@ -22,6 +22,23 @@ export function useCreateExercise() {
   return useMutation({
     mutationFn: (data) => create(EXERCISES_URL, data).then((r) => r.json()),
     onSuccess: () => qc.invalidateQueries({ queryKey: keys.all() }),
-    delay: 1000,
+  });
+}
+
+export function useUpdateExercise() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (data) =>
+      update(`${EXERCISES_URL}/${data.id}`, data).then((r) => r.json()),
+    onSuccess: () => qc.invalidateQueries({ queryKey: keys.all() }),
+    onError: (err) => console.error(err),
+  });
+}
+
+export function useDeleteExercise() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id) => remove(`${EXERCISES_URL}/${id}`).then((r) => r.json()),
+    onSuccess: () => qc.invalidateQueries({ queryKey: keys.all() }),
   });
 }

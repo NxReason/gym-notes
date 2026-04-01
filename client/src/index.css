@@ -35,6 +35,10 @@ a {
   color: var(--text-secondary);
   text-decoration: none;
 }
+a:focus {
+  color: var(--text-primary);
+  outline: none;
+}
 
 input {
   background-color: transparent;
@@ -44,12 +48,19 @@ input {
 }
 
 button {
+  padding: 0.5rem 1rem;
+
   font: inherit;
   color: var(--text-primary);
   background-color: var(--color-accent);
+
   border: none;
-  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+
   transition: all 0.15s ease;
+}
+button:focus {
+  outline: 1px solid var(--color-accent-active);
 }
 button:hover {
   cursor: pointer;
